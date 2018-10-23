@@ -1,0 +1,64 @@
+<div class="card bg-light mb-3" style="max-width: 70%;">
+    <div class="card-header" *ngIf="!product.id else elseTitle">{{ titulo }}</div>
+    <ng-template #elseTitle>
+        <div class="card-header">{{ title2 }}</div>
+    </ng-template>
+
+    <div class="card-body">
+
+        <form [formGroup]="forma">
+
+            <div class="form-group row">
+                <label for="name" class="col-form-label col-sm-3">Nombre</label>
+                <div class="col-sm-7">
+                    <input type="text" placeholder="Nombre del producto" class="form-control" [(ngModel)]="product.name" name="name" formControlName="name">
+                    <div id="error" *ngIf="forma.controls['name'].errors?.required" class="form-control-feedback">
+                        El nombre es necesario
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="price" class="col-form-label col-sm-3">Precio</label>
+                <div class="col-sm-7">
+                    <input type="text" placeholder="Precio" class="form-control" [(ngModel)]="product.price" name="price" formControlName="price">
+                    <div id="error" *ngIf="forma.controls['price'].errors?.required" class="form-control-feedback">
+                        El campo no puede estar vacio
+                    </div>
+                    <div id="error" *ngIf="forma.controls['price'].errors?.pattern" class="form-control-feedback">
+                        El valor debe ser un numero entero y mayor que 0 "Cero"
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="quantity" class="col-form-label col-sm-3">Cantidad</label>
+                <div class="col-sm-7">
+                    <input type="text" placeholder="Cantidad" class="form-control" [(ngModel)]="product.quantity" name="quantity" formControlName="quantity">
+                    <div id="error" *ngIf="forma.controls['quantity'].errors?.pattern" class="form-control-feedback">
+                        El valor debe ser un numero entero
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="form-group row">
+                <label for="file" class="col-form-label col-sm-3">Imagen</label>
+                <div class="col-sm-7">
+                    <input type="file" name="file" id="file">
+                </div>
+            </div> -->
+
+            <div class="form-group row">
+                <div class="col" style="text-align: right">
+                    <button [routerLink]="['/products']" class="btn btn-secondary" role="button">Cancelar</button>
+                    <button class="btn btn-success" [disabled]="!forma.valid" role="button" (click)='create(forma)' *ngIf="!product.id else elseBlock">Crear</button>
+                    <ng-template #elseBlock>
+                        <button class="btn btn-success" [disabled]="!forma.valid" role="button" (click)='update()'>Actualizar</button>
+                    </ng-template>
+                </div>
+            </div>
+            <!-- {{forma.valid}} -->
+        </form>
+
+    </div>
+</div>

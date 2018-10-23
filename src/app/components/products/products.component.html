@@ -1,0 +1,61 @@
+<div class="card">
+    <div>
+        <!-- <button class="btn btn-dark" [routerLink]="['/']">Regresar</button> -->
+    </div>
+    <h3 class="card-header">Productos</h3>
+    <div class="card-body">
+        <div class="my-2 text-left">
+            <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/products/form']">Agregar Producto</button>
+        </div>
+
+        <!-- <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Editar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td scope="col">{{ product.id }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.quantity }}</td>
+                    <td>
+                        <button type="button" name="button" [routerLink]="['/products/form', product.id]" class="btn btn-primary">Editar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table> -->
+        <div class="card-deck">
+
+            <div class="row">
+                <div class="card mt-4" style="min-width: 12rem; max-width: 12rem; width: 12rem;" *ngFor="let product of products">
+                    <img class="card-img" src="../../../assets/img/imgProducts2.jpg" width="100%" height="120px" alt="Card image cap">
+                    <div class="card-block">
+                        <h5 class="card-title"><b>{{product.name}}</b></h5>
+                        <p class="card-text">Precio: <b>{{product.price}}</b>
+                            <br> Cantidad: <b>{{product.quantity}}</b>
+                        </p>
+                    </div>
+                    <div class="card-block">
+                        <button class="btn btn-success" type="button" [routerLink]="['/products/charts', product.id]">Ver mas <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                        <button type="button" name="button" [routerLink]="['/products/form', product.id]" class="btn btn-info">
+                            <span class="fa fa-pencil"></span>
+                        </button>
+                        <button type="button" name="button" class="btn btn-danger" (click)="ondelete(product)">
+                            <span class="fa fa-remove"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>

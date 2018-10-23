@@ -1,0 +1,15 @@
+#title {
+    margin-top: 50px;
+    text-align: center;
+}
+
+button {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.container {
+    text-align: center
+}
